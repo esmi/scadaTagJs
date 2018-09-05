@@ -83,10 +83,10 @@
 			}
 		}
 
-		var scada = new Scada( params )
+		var myScada = new scada( params )
 
 		$( document ).ready(function() {
-			scada.Start();
+			myScada.Start();
 		});
 
 		</script>

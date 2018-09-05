@@ -1,5 +1,5 @@
 
-class Scada extends ScadaTags{
+class scada extends ScadaTags{
 
     constructor(params) {
 
