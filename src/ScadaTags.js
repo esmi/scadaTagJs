@@ -106,7 +106,7 @@ class ScadaTags {
         if (typeof data == "undefined")
             return;
         console.log(data);
-        if (typeof data.length !== "undefined") {
+        if (typeof data['length'] !== "undefined") {
             for (var i = 0; i < data.length; i++) {
                 var e = data[i];
                 //console.log(e)
@@ -213,7 +213,7 @@ class ScadaTags {
             this.beforeDisplay(data)
         }
 
-        if (typeof data.length !== "undefined") {
+        if ( data ) {
             for (var i = 0; i < data.length; i++) {
                 var e = data[i];
                 var selr = "#" + e.id ;
@@ -230,7 +230,13 @@ class ScadaTags {
             }
         }
         else {
-            console.log("backend return data is invalid!")
+            var msg = "backend return data is invalid!"
+            console.log(msg)
+            console.log("Program will abort this.displayTimeout!")
+            clearTimeout(this.displayTimeout)
+            console.log("Program will abort this.timerGetData!")
+            clearInterval(this.timerGetData)
+            alert("Program has been reset timeout, and interval, Please correct backend data, and reload program.")//throw new Error("Something went badly wrong!");
         }
     }
 
@@ -272,6 +278,7 @@ beause class: "${this.name}" constructor parameter not contain:
         if ( this.params.getDataWithDisplay == true ) {
             if (!this.timerCreate) {
                 // if timerCreate is clear(ed), do displayData().
+                this.displayTimout =
                 setTimeout(function () {
                     this.displayData()
                 }.bind(this), 2000);
