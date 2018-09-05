@@ -58,7 +58,7 @@
 
 
 		var params = {
-			defaultUrl: "scada.php",
+			defaultUrl: "backend.php",
 
 			// params for getdata().
 			getDataParams: {
