@@ -105,16 +105,21 @@ class ScadaTags {
         ]; */
         if (typeof data == "undefined")
             return;
-
-        for (var i = 0; i < data.length; i++) {
-            var e = data[i];
-            //console.log(e)
-            if ( e.type == "img") {
-                this.createElement( e, "", 0, 0, 0);
+        console.log(data);
+        if (typeof data.length !== "undefined") {
+            for (var i = 0; i < data.length; i++) {
+                var e = data[i];
+                //console.log(e)
+                if ( e.type == "img") {
+                    this.createElement( e, "", 0, 0, 0);
+                }
+                else {
+                    this.createElement(e);
+                }
             }
-            else {
-                this.createElement(e);
-            }
+        }
+        else {
+            console.log("backend return data is invalid!")
         }
     }
     appendEl (e, code,x,y,w) {
@@ -208,19 +213,24 @@ class ScadaTags {
             this.beforeDisplay(data)
         }
 
-        for (var i = 0; i < data.length; i++) {
-            var e = data[i];
-            var selr = "#" + e.id ;
-            if ( e.type != "virture_tag") {
-                if ( e.type == undefined || e.type != "img") {
-                    this.displayElement(selr, e);
-                }
-                else {
-                    if (e.type == "img") {
-                        $(selr).attr("src", e.src);
+        if (typeof data.length !== "undefined") {
+            for (var i = 0; i < data.length; i++) {
+                var e = data[i];
+                var selr = "#" + e.id ;
+                if ( e.type != "virture_tag") {
+                    if ( e.type == undefined || e.type != "img") {
+                        this.displayElement(selr, e);
+                    }
+                    else {
+                        if (e.type == "img") {
+                            $(selr).attr("src", e.src);
+                        }
                     }
                 }
             }
+        }
+        else {
+            console.log("backend return data is invalid!")
         }
     }
 
