@@ -1,3 +1,7 @@
 /vendor/
 /node_modules/
+/example/vendor
+/example/composer.lock
+/example/src
+
 env.sh

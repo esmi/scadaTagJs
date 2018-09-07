@@ -1,7 +1,5 @@
 <?php
-//require __DIR__ . '/../vendor/autoload.php';
-include_once "../../ScadaTags/src/Scada/Base.php";
-include_once "../../ScadaTags/src/Scada/Tags.php";
+require __DIR__ . '/../vendor/autoload.php';
 
 class scada extends \Esmi\Scada\Tags {
 

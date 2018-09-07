@@ -1,0 +1,59 @@
+{
+    "name": "esmi/testcomposer",
+    "description": "a composer.json for my composer test and template.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "esmi",
+            "email": "evansmile@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "url": "https://github.com/esmi/ScadaTags.git",
+            "type": "git"
+        },
+        {
+            "url": "https://github.com/esmi/esMethod.git",
+            "type": "git"
+        },
+        {
+            "url": "https://github.com/esmi/scadaTagJs.git",
+            "type": "git"
+        },
+        {
+            "packagist.org": false
+        }
+    ],
+    "require": {
+        "esmi/scada": "*",
+        "esmi/scadajs": "*"
+    },
+    "minimum-stability": "dev",
+
+
+    "test_comment0" : "==============================================",
+    "test_comment1": {
+        "require": {
+            "esmi/esmethod":"*",
+            "esmi/scada": "*"
+        },
+
+        "repositories": [
+            {
+                "url": "https://github.com/esmi/ScadaTags.git",
+                "type": "git"
+            },
+            {
+                "url": "https://github.com/esmi/esMethod.git",
+                "type": "git"
+            },
+            {
+                "packagist.org": false
+            }
+        ],
+
+        "none": "comment_end"
+    }
+}
