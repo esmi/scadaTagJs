@@ -2,6 +2,7 @@
 /node_modules/
 /example/vendor
 /example/composer.lock
-/example/src
+./example/src/
+./example/src/*
 
 env.sh
