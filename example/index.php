@@ -31,7 +31,8 @@
         //frontend relatived:
         // if set "noGetData: true", ScadaTags.js only create elements,
         // and nodisplay data.
-        noGetData: true,
+
+        //noGetData: true,
 
 		// html relation:
 		div: '#mydiv',
