@@ -1,4 +1,4 @@
-<?php 
+<?php
 ?>
 <html lang="en">
 <head>
@@ -18,6 +18,7 @@
 	<script type="text/javascript">
 
 	var params = {
+        // backend relatived.
 		defaultUrl: "backend/run.php",
 
 		// params for getdata().
@@ -26,6 +27,11 @@
 			'data': {
 			}
 		},
+
+        //frontend relatived:
+        // if set "noGetData: true", ScadaTags.js only create elements,
+        // and nodisplay data.
+        noGetData: true,
 
 		// html relation:
 		div: '#mydiv',

@@ -105,7 +105,7 @@ class ScadaTags {
         ]; */
         if (typeof data == "undefined")
             return;
-        console.log(data);
+
         if (typeof data['length'] !== "undefined") {
             for (var i = 0; i < data.length; i++) {
                 var e = data[i];
@@ -140,6 +140,11 @@ class ScadaTags {
             var elm = '<input type="text" id="' + e.id + code +
                                  '" name="' + e.id + code +  '"' +
                                  " style='display:inline;'/>";
+        }
+        if ( e.type == "box") {
+            var elm = '<input type="button" id="' + e.id + code +
+                                 '" name="' + e.id + code +  '"' +
+                                 " style='background-color:Transparent;border:none;cursor:pointer;overflow: hidden;outline:none;display:inline;'/>";
         }
         else if ( e.type == "virture_tag") {
             var elm = '<img id="' + e.id  + '"' + "/>";
@@ -230,13 +235,15 @@ class ScadaTags {
             }
         }
         else {
-            var msg = "backend return data is invalid!"
-            console.log(msg)
-            console.log("Program will abort this.displayTimeout!")
-            clearTimeout(this.displayTimeout)
-            console.log("Program will abort this.timerGetData!")
-            clearInterval(this.timerGetData)
-            alert("Program has been reset timeout, and interval, Please correct backend data, and reload program.")//throw new Error("Something went badly wrong!");
+            if ( this.params.noGetData != true) {
+                var msg = "backend return data is invalid!"
+                console.log(msg)
+                console.log("Program will abort this.displayTimeout!")
+                clearTimeout(this.displayTimeout)
+                console.log("Program will abort this.timerGetData!")
+                clearInterval(this.timerGetData)
+                alert("Program has been reset timeout, and interval, Please correct backend data, and reload program.")//throw new Error("Something went badly wrong!");
+            }
         }
     }
 
@@ -278,8 +285,7 @@ beause class: "${this.name}" constructor parameter not contain:
         if ( this.params.getDataWithDisplay == true ) {
             if (!this.timerCreate) {
                 // if timerCreate is clear(ed), do displayData().
-                this.displayTimout =
-                setTimeout(function () {
+                this.displayTimout = setTimeout(function () {
                     this.displayData()
                 }.bind(this), 2000);
             }
@@ -297,6 +303,13 @@ beause class: "${this.name}" constructor parameter not contain:
                 var data = XHR.responseJSON
 
                 this.createScadaEls(data)
+
+                if ( this.params.noGetData == true) {
+                    clearInterval(this.timerCreate);  // clear create timer.
+                    this.timerCreate = 0;
+                    return;
+                }
+
                 this.displayData()
 
                 clearInterval(this.timerCreate);  // clear create timer.
