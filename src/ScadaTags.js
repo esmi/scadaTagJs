@@ -141,6 +141,11 @@ class ScadaTags {
                                  '" name="' + e.id + code +  '"' +
                                  " style='display:inline;'/>";
         }
+        if ( e.type == "label") {
+            var elm = '<input type="text" id="' + e.id + code +
+                                 '" name="' + e.id + code +  '"' +
+                                 " style='backgroundColor:transparent display:inline;'/>";
+        }
         if ( e.type == "box") {
             var elm = '<input type="button" id="' + e.id + code +
                                  '" name="' + e.id + code +  '"' +
@@ -245,6 +250,20 @@ class ScadaTags {
                 alert("Program has been reset timeout, and interval, Please correct backend data, and reload program.")//throw new Error("Something went badly wrong!");
             }
         }
+        // for (var i = 0; i < data.length; i++) {
+        //     var e = data[i];
+        //     var selr = "#" + e.id ;
+        //     if ( e.type != "virture_tag") {
+        //         if ( e.type == undefined || e.type != "img") {
+        //             this.displayElement(selr, e);
+        //         }
+        //         else {
+        //             if (e.type == "img") {
+        //                 $(selr).attr("src", e.src);
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     getDataParams0() {
@@ -303,6 +322,11 @@ beause class: "${this.name}" constructor parameter not contain:
                 var data = XHR.responseJSON
 
                 this.createScadaEls(data)
+
+                if (typeof this.afterCreateElement == "function") {
+                    this.afterCreateElement()
+                }
+
 
                 if ( this.params.noGetData == true) {
                     clearInterval(this.timerCreate);  // clear create timer.

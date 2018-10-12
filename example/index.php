@@ -41,12 +41,20 @@
 			src: "images/scada.jpg",
 		},
 
-		getDataWithDisplay: true,
+        //frontend relatived:
+        //if "noGetData" is true, ScadaTags.js only run createElemet(),
+        //noGetData: true,
+
+		getDataWithDisplay: true
+
 
 		// time for timer routine.
 		time: {  // time for timer
 			getData: 5000,
 			create: 1000 //,
+
+            //showTable: 60000 // timer for showTable() define in js/scada.js
+
 		}
 	}
 
